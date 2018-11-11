@@ -1,6 +1,6 @@
-package world.gregs.hestia
+package world.gregs.hestia.fs
 
-import world.gregs.hestia.network.packets.Packet
+import world.gregs.hestia.core.network.packets.Packet
 
 class GrabStartUpPacket : Packet.Builder() {
 
