@@ -1,12 +1,12 @@
-package world.gregs.hestia
+package world.gregs.hestia.fs
 
 import io.netty.buffer.ByteBuf
 import org.slf4j.LoggerFactory
-import world.gregs.hestia.network.NetworkConstants
-import world.gregs.hestia.network.Session
-import world.gregs.hestia.network.codec.inbound.HandshakeHandler
-import world.gregs.hestia.network.packets.out.Response
-import world.gregs.hestia.services.Cache
+import world.gregs.hestia.core.network.NetworkConstants
+import world.gregs.hestia.core.network.Session
+import world.gregs.hestia.core.network.codec.inbound.HandshakeHandler
+import world.gregs.hestia.core.network.packets.out.Response
+import world.gregs.hestia.core.services.Cache
 
 class FileRequestHandshake : HandshakeHandler() {
 

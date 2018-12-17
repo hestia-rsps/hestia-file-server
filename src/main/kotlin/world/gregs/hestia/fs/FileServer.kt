@@ -1,10 +1,11 @@
-package world.gregs.hestia
+package world.gregs.hestia.fs
 
-import world.gregs.hestia.network.NetworkConstants
-import world.gregs.hestia.network.codec.Encoder
-import world.gregs.hestia.network.codec.Pipeline
-import world.gregs.hestia.network.server.Network
-import world.gregs.hestia.services.Cache
+import world.gregs.hestia.core.Settings
+import world.gregs.hestia.core.network.NetworkConstants
+import world.gregs.hestia.core.network.codec.Encoder
+import world.gregs.hestia.core.network.codec.Pipeline
+import world.gregs.hestia.core.network.server.Network
+import world.gregs.hestia.core.services.Cache
 
 class FileServer {
     private val network: Network = Network(name = "File Server", channel = Pipeline(FileRequestHandshake(), Encoder()))
