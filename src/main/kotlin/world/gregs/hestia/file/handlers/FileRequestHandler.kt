@@ -13,7 +13,9 @@ import world.gregs.hestia.file.handlers.EncryptionKeyHandler.Companion.encryptio
 class FileRequestHandler(private val cache: Cache) : MessageHandler<FileRequest> {
 
     override fun handle(ctx: ChannelHandlerContext, message: FileRequest) {
-        val (index, archive, priority) = message
+        val (hash, priority) = message
+        val index = (hash shr 16).toInt()
+        val archive = (hash - (index shl 16)).toInt()
 
         //Check index and archive exist
         if (archive < 0) {
@@ -29,7 +31,8 @@ class FileRequestHandler(private val cache: Cache) : MessageHandler<FileRequest>
             }
         }
         //Retrieve cache data
-        val data = cache.getArchive(index, archive) ?: return
+        val data = cache.getArchive(index, archive)
+                ?: return
         //Retrieve encryption key
         val encryption = if (index == 255 && archive == 255 || !ctx.channel().hasAttr(encryptionKey)) 0 else ctx.channel().attr(encryptionKey).get()
         //Read compression key
