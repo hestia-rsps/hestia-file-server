@@ -11,7 +11,7 @@ class CacheArchiveEncoder : MessageEncoder<CacheArchiveFile>() {
             val start = buffer.writerIndex()
             //Write header
             writeByte(index)
-            writeInt(archive)
+            writeShort(archive)
             writeByte(settings)
             writeInt(length)
 

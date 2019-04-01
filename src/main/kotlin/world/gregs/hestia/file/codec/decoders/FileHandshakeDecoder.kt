@@ -6,12 +6,10 @@ import world.gregs.hestia.core.network.codec.packet.Packet
 import world.gregs.hestia.file.codec.FileServerOpcodes.HANDSHAKE
 import world.gregs.hestia.file.codec.decoders.messages.FileHandshakeMessage
 
-class FileHandshakeDecoder : MessageDecoder<FileHandshakeMessage>(8, HANDSHAKE) {
+class FileHandshakeDecoder : MessageDecoder<FileHandshakeMessage>(4, HANDSHAKE) {
 
     override fun decode(ctx: ChannelHandlerContext, packet: Packet): FileHandshakeMessage? {
-        val major = packet.readInt()
-        val minor = packet.readInt()
-        return FileHandshakeMessage(major, minor)
+        return FileHandshakeMessage(packet.readInt())
     }
 
 }

@@ -3,7 +3,6 @@ package world.gregs.hestia.file
 import world.gregs.hestia.core.Settings
 import world.gregs.hestia.core.cache.Cache
 import world.gregs.hestia.core.cache.CacheStore
-import world.gregs.hestia.core.network.NetworkConstants
 import world.gregs.hestia.core.network.Pipeline
 import world.gregs.hestia.core.network.codec.decode.SimplePacketDecoder
 import world.gregs.hestia.core.network.codec.message.SimpleMessageDecoder
@@ -35,7 +34,7 @@ class FileServer {
             add(SimpleMessageEncoder(codec))
         }
 
-        Network(name = "File Server", channel = pipeline).start(NetworkConstants.BASE_PORT + 1)
+        Network(name = "File Server", channel = pipeline).start(Settings.getInt("port", 443))
     }
 
     companion object {
