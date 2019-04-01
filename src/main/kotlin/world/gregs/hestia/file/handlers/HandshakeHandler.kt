@@ -19,12 +19,12 @@ class HandshakeHandler : MessageHandler<FileHandshakeMessage> {
     private val logger = LoggerFactory.getLogger(HandshakeHandler::class.java)
 
     override fun handle(ctx: ChannelHandlerContext, message: FileHandshakeMessage) {
-        val (major, minor) = message
+        val (major) = message
 
         //Check client version
-        if (major != NetworkConstants.CLIENT_MAJOR_VERSION || minor != NetworkConstants.CLIENT_MINOR_VERSION) {
+        if (major != NetworkConstants.CLIENT_MAJOR_VERSION) {
             ctx.clientRespond(Response.GAME_UPDATED)
-            logger.info("Invalid game version ${ctx.getSession().getHost()} $major.$minor")
+            logger.info("Invalid game version ${ctx.getSession().getHost()} $major")
             return
         }
 

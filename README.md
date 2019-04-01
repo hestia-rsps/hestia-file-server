@@ -4,4 +4,4 @@ File distribution server
 
 ## Dependencies
 
-This repository requires FileStore.jar & hestia-server-core.jar in a libs folder to build.
+This repository requires hestia-server-core.jar in a libs folder to build.
