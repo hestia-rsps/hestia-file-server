@@ -3,10 +3,10 @@ package world.gregs.hestia.file
 import world.gregs.hestia.core.Settings
 import world.gregs.hestia.core.cache.Cache
 import world.gregs.hestia.core.cache.CacheStore
-import world.gregs.hestia.core.network.Pipeline
 import world.gregs.hestia.core.network.codec.decode.SimplePacketDecoder
 import world.gregs.hestia.core.network.codec.message.SimpleMessageDecoder
 import world.gregs.hestia.core.network.codec.message.SimpleMessageEncoder
+import world.gregs.hestia.core.network.pipe.Pipeline
 import world.gregs.hestia.core.network.server.Network
 import world.gregs.hestia.file.codec.FileCodec
 
@@ -41,7 +41,7 @@ class FileServer {
 
         @JvmStatic
         fun main(args: Array<String>) {
-            Settings.load()
+            Settings.load("./file-server-settings.yml")
             val cache = CacheStore()
             FileServer().start(cache)
         }
